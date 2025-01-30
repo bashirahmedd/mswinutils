@@ -1,0 +1,1 @@
+ >PowerShell -ExecutionPolicy Bypass -File .\brighness_morning_evening.ps1
