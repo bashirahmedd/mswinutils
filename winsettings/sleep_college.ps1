@@ -1,6 +1,7 @@
 # Set Windows Power Settings Based on Argument
 
 
+
 try {
     Write-Host "Preventing sleep and display turn-off when plugged in..."
     powercfg /change standby-timeout-ac 0
@@ -15,3 +16,10 @@ catch {
 . "$PSScriptRoot\helper\brighness_morning_evening.ps1"
 
 #.\myscript.ps1 -username "John" -age "thirty" 
+
+$syncTimePath="$PSScriptRoot\helper\sync_time.ps1"
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
+    Write-Host "This script requires administrative privileges. Please run as Administrator."
+    Start-Process powershell -ArgumentList "-ExecutionPolicy Bypass -File `"$syncTimePath`"" -Verb RunAs
+    #exit
+}
