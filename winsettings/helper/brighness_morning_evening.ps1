@@ -1,10 +1,10 @@
 Write-Host "Make sure time is synced..."
 # Adjust Brightness
 $currentHour = (Get-Date).Hour
-if ($currentHour -ge 8 -and $currentHour -lt 16) {
-    $desiredBrightness = 60
+if ($currentHour -ge 8 -and $currentHour -lt 19) {
+    $desiredBrightness = 70
 } else {
-    $desiredBrightness = 30
+    $desiredBrightness = 52
 }
 
 # Get WMI Class for Monitor Brightness
