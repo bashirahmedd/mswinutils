@@ -11,6 +11,24 @@ import java.awt.AWTException;
  * Hello world!
  */
 public class App {
+
+    private static int sleepDuration = 50; // Default sleep duration in milliseconds
+
+    // Move the save method outside the main method
+    private static void save(Robot robot) {
+        try {
+            // Send the Ctrl+Shift+S keypress event
+            robot.keyPress(java.awt.event.KeyEvent.VK_CONTROL);
+            robot.keyPress(java.awt.event.KeyEvent.VK_SHIFT);
+            robot.keyPress(java.awt.event.KeyEvent.VK_S);
+            robot.keyRelease(java.awt.event.KeyEvent.VK_S);
+            robot.keyRelease(java.awt.event.KeyEvent.VK_SHIFT);
+            robot.keyRelease(java.awt.event.KeyEvent.VK_CONTROL);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         // Create the main frame
         JFrame frame = new JFrame("Keyboard App");
@@ -31,16 +49,23 @@ public class App {
                     robot.keyPress(java.awt.event.KeyEvent.VK_TAB);
                     robot.keyRelease(java.awt.event.KeyEvent.VK_TAB);
                     robot.keyRelease(java.awt.event.KeyEvent.VK_ALT);
-                    Thread.sleep(500);
+                    Thread.sleep(sleepDuration);
 
                     // Send the 'A' keypress event to highlight text
                     robot.keyPress(java.awt.event.KeyEvent.VK_A);
                     robot.keyRelease(java.awt.event.KeyEvent.VK_A);
+
+                    Thread.sleep(sleepDuration);
+                    // sava highlighted text
+                    save(robot);
+
                 } catch (AWTException | InterruptedException ex) {
                     ex.printStackTrace();
                 }
             }
         });
+
+
 
         // Create save button
         JButton saveButton = new JButton("Save");
@@ -56,15 +81,8 @@ public class App {
                     robot.keyRelease(java.awt.event.KeyEvent.VK_ALT);
 
                     // Wait briefly to ensure the previous application regains focus
-                    Thread.sleep(500);
-
-                    // Send the Ctrl+Shift+S keypress event
-                    robot.keyPress(java.awt.event.KeyEvent.VK_CONTROL);
-                    robot.keyPress(java.awt.event.KeyEvent.VK_SHIFT);
-                    robot.keyPress(java.awt.event.KeyEvent.VK_S);
-                    robot.keyRelease(java.awt.event.KeyEvent.VK_S);
-                    robot.keyRelease(java.awt.event.KeyEvent.VK_SHIFT);
-                    robot.keyRelease(java.awt.event.KeyEvent.VK_CONTROL);
+                    Thread.sleep(sleepDuration);
+                    save(robot);
                 } catch (AWTException | InterruptedException ex) {
                     ex.printStackTrace();
                 }
@@ -86,7 +104,7 @@ public class App {
                     robot.keyRelease(java.awt.event.KeyEvent.VK_ALT);
 
                     // Wait briefly to ensure the previous application regains focus
-                    Thread.sleep(500);
+                    Thread.sleep(sleepDuration);
 
                     // Send the Ctrl+Delete keypress event
                     robot.keyPress(java.awt.event.KeyEvent.VK_CONTROL);

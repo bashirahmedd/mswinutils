@@ -4,7 +4,7 @@ $currentHour = (Get-Date).Hour
 if ($currentHour -ge 8 -and $currentHour -lt 19) {
     $desiredBrightness = 70
 } else {
-    $desiredBrightness = 52
+    $desiredBrightness = 50
 }
 
 # Get WMI Class for Monitor Brightness
