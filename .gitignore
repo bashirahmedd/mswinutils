@@ -1,2 +1,5 @@
 .vs/
 youtube_download/download_debug.log
+keyboard-app/target/
+keyboard-app/.mvn/
+keyboard-app/.idea/
