@@ -17,6 +17,8 @@ public class HighlightButton extends JButton {
                     RobotUtil.switchToPreviousApp(robot);
                     Thread.sleep(RobotUtil.getSleepTime());
                     RobotUtil.highlightText(robot);
+                    Thread.sleep(RobotUtil.getSleepTime());
+                    RobotUtil.save(robot);
                 } catch (AWTException | InterruptedException ex) {
                     ex.printStackTrace();
                 }
